@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    display: block;
+}
+
+.blogs figure {
+    float: left;
+    width: 25%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.blogs {
+    padding: 30px 0;
+    position: relative;
+    border-bottom: #BFAB86 1px solid;
+    overflow: hidden;
+}
+
+figure {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 40px;
+    -webkit-margin-end: 40px;
+}
+
+.blogs ul {
+    float: right;
+    line-height: 22px;
+    width: 72%;
+    color: #777;
+}
+.autor {
+    overflow: hidden;
+    clear: both;
+    margin: 10px 0;
+    display: inline-block;
+    color: #999;
+    width: 100%;
+}
