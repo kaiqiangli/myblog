@@ -2,14 +2,27 @@
 # coding=utf-8
 
 import tornado.web
-import methods.readdb as mrb
 import methods.article as articleRead
 
-class UserHandler(tornado.web.RequestHandler):
+# 文章详情页
+class DetailHandler(tornado.web.RequestHandler):
     def get(self):
-        username = self.get_argument("user")
-        user_infos = mrb.select_table(table="users",column="*",condition="username",value=username)
-        # self.render("user.html", users = user_infos)
-        userId = user_infos[0]['id']
-        articles = articleRead.query_article(userId, 0, 10)
-        self.render('article.html', articles = articles)
+        articles = articleRead.query_article(0, 10)
+        categorys = articleRead.query_category()
+
+        recentArticles = articleRead.query_recent_article()
+
+        id = self.get_argument("id")
+        print id
+        article = articleRead.get(id)
+        self.render('single.html',article = article, articles = articles, categorys = categorys, recentArticles = recentArticles)
+
+# 联系我们
+class ContactHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.render('contact.html')
+
+# 关于
+class AboutHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.render('about.html')

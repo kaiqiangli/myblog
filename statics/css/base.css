@@ -139,4 +139,14 @@ _margin-bottom: 15px; }
 .pages span { padding-right:10px }
 .pages b,.pages a:hover{ background:#db6d4c; color:#fff;}
 
+.smile_rank li {
+    height: 25px;
+    line-height: 25px;
+    clear: both;
+    padding-left: 5px;
+    overflow: hidden;
+    padding-left: 15px;
+    background: url(../images/li.jpg) no-repeat left center;
+}
+
 

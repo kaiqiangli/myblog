@@ -3,13 +3,22 @@
 
 import tornado.web
 import methods.readdb as mrd
+import methods.article as articleRead
+from methods.common import *
+import datetime
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
         usernames = mrd.select_columns(table="users", column="username")
         one_user = usernames[0]['username']
-        self.render("index.html", user=one_user)
+        articles = articleRead.query_article(0, 6)
 
+        for article in articles:
+            article['crtTime'] = getFromatTime(article['crtTime'])
+
+        categroys = articleRead.query_category()
+        recentarticles = articleRead.query_recent_article()
+        self.render("index.html", articles = articles , user=one_user, categorys = categroys, recentArticles = recentarticles)
 
     def post(self):
         username = self.get_argument("username")
