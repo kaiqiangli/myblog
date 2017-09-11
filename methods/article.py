@@ -10,9 +10,16 @@ def query_article(startPos, pageSize):
     articles = cursor.fetchall()
     return articles
 
+# 查询热门文章
+def query_features():
+    sql = "select id,title,summary from Article where deleted = 0 order by commendsCount desc limit 5"
+    cursor.execute(sql)
+    features = cursor.fetchall()
+    return features
+
 # 根据文章编号查询文章
 def get(id):
-    sql = "select * from Article where deleted = 0 and id = %d" %id
+    sql = "select * from Article where deleted = 0 and id = %s" %id
     cursor.execute(sql)
     article= cursor.fetchall()[0]
     return article

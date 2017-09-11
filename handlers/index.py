@@ -18,7 +18,8 @@ class IndexHandler(tornado.web.RequestHandler):
 
         categroys = articleRead.query_category()
         recentarticles = articleRead.query_recent_article()
-        self.render("index.html", articles = articles , user=one_user, categorys = categroys, recentArticles = recentarticles)
+        features = articleRead.query_features()
+        self.render("index.html", articles = articles , user=one_user, categorys = categroys, recentArticles = recentarticles, features = features)
 
     def post(self):
         username = self.get_argument("username")
