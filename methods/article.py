@@ -38,3 +38,11 @@ def query_recent_article():
     recent = cursor.fetchall()
     return recent
 
+def update_article(id,md_content,content):
+    sql = "update Article set md_content='%s',content='%s' where id='%s'" % (md_content, content, id)
+    # 执行sql
+    cursor.execute(sql)
+    # 事务提交
+    DB_CONN.commit()
+
+

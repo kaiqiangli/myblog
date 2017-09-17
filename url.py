@@ -9,10 +9,12 @@ sys.setdefaultencoding("utf-8")
 
 from handlers.index import IndexHandler
 from handlers.user import *
-
+from handlers.article import *
 url = [
     (r'/', IndexHandler),
     (r'/detail', DetailHandler),
     (r'/contact', ContactHandler),
-    (r'/about', AboutHandler)
+    (r'/about', AboutHandler),
+    (r'/edit', EditHandler),
+    (r'/post', PostHandler)
 ]
