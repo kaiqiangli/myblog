@@ -20,8 +20,11 @@ CREATE TABLE `Article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL COMMENT '标题',
   `summary` varchar(255) DEFAULT NULL COMMENT '简介',
-  `content` varchar(45) DEFAULT NULL,
-  `userId` varchar(45) DEFAULT NULL COMMENT '用户',
+  `md_content` text COMMENT '内容的markdown',
+  `content` text,
+  `coverPicUrl` varchar(200) DEFAULT NULL COMMENT '封面图片地址',
+  `userId` varchar(45) DEFAULT '1' COMMENT '用户',
+  `categoryId` varchar(45) DEFAULT NULL,
   `viewsCount` int(11) DEFAULT '0' COMMENT '阅读次数',
   `pointsCount` int(11) DEFAULT '0' COMMENT '点赞次数',
   `shareCount` int(11) DEFAULT '0' COMMENT '分享次数',
@@ -29,6 +32,6 @@ CREATE TABLE `Article` (
   `crtTime` datetime DEFAULT NULL COMMENT '创建时间',
   `updateTime` datetime DEFAULT NULL COMMENT '更新时间',
   `submitTime` varchar(45) DEFAULT NULL COMMENT '提交时间',
-  `deleted` tinyint(1) DEFAULT NULL COMMENT '是否删除(1 已删除, 0 未删除)',
+  `deleted` tinyint(1) DEFAULT '0' COMMENT '是否删除(1 已删除, 0 未删除)',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='发表文章';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='发表文章';

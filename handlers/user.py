@@ -4,7 +4,7 @@
 import tornado.web
 import methods.article as articleRead
 from methods.common import *
-
+import re
 # 文章详情页
 class DetailHandler(tornado.web.RequestHandler):
     def get(self):

@@ -21,7 +21,25 @@
     <!--[if lt IE 9]>      
         <script src="{{static_url("js/vendor/google/html5-3.6-respond-1.1.0.min.js")}}"></script>
     <![endif]-->
+    <script src="{{static_url('js/jquery.min.js')}}"></script>
+    <script type="application/javascript">
 
+        $(document).ready(function() {
+
+            var str = "{{article['content']}}"
+            document.getElementById("content").innerHTML = HTMLDecode(str)
+
+        });
+
+        function HTMLDecode(text) {
+             var temp = document.createElement("div");
+             temp.innerHTML = text;
+             var output = temp.innerText || temp.textContent;
+             temp = null;
+             return output;
+        }
+
+    </script>
     
 </head>
 <body>
@@ -97,7 +115,8 @@
                             <div class="meta">
                                 <i class="fa fa-user"></i> Li Kaiqiang <i class="fa fa-calendar"></i> {{article['crtTime']}} <i class="fa fa-comments"></i><span class="data"><a href="#comments">{{article['commendsCount']}} Comments</a></span>
                             </div>
-                            {{article['content']}}
+                            <div id="content">
+                            </div>
                         </div>
                     </article>
 
@@ -314,7 +333,6 @@
         </div>
     </footer>
 
-    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
     <script src="{{static_url('js/jquery.min.js')}}"></script>
     <script src="{{static_url('js/bootstrap.min.js')}}"></script>
     <script src="{{static_url('js/modernizr.js')}}"></script>

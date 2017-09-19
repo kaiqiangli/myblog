@@ -45,4 +45,10 @@ def update_article(id,md_content,content):
     # 事务提交
     DB_CONN.commit()
 
+def insert(md_content,content):
+    sql = "insert into Article(title,summary,md_content, content,coverPicUrl,categoryId,crtTime,updateTime,submitTime) values ('','','%s', '%s','',1, now(), now(), now())" % (md_content, content)
+    cursor.execute(sql)
+    DB_CONN.commit()
+
+
 
